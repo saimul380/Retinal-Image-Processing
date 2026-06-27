@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retinal Image Processing</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-primary">
+            Retinal Image Analysis System
+        </h1>
+
+        <p class="text-muted">
+            Diabetic Retinopathy Image Processing
+        </p>
+
+    </div>
+
+    <div class="card shadow p-4 mb-5">
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+
+            <div class="mb-3">
+
+                <input
+                    type="file"
+                    class="form-control"
+                    name="image"
+                    required>
+
+            </div>
+
+            <button
+                class="btn btn-primary w-100"
+                type="submit">
+
+                Process Image
+
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if image %}
+
+    <div class="row">
+
+        <!-- Original -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Original Image</h5>
+
+                    <img
+                        src="{{ image }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CLAHE -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>CLAHE Enhancement</h5>
+
+                    <img
+                        src="{{ clahe }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Histogram -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Histogram Equalization</h5>
+
+                    <img
+                        src="{{ histogram }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Green -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Green Channel</h5>
+
+                    <img
+                        src="{{ green }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Gaussian -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Gaussian Filter</h5>
+
+                    <img
+                        src="{{ gaussian }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Median -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Median Filter</h5>
+
+                    <img
+                        src="{{ median }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
