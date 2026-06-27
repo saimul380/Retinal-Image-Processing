@@ -37,7 +37,12 @@ def upload():
     histogram=results["histogram"],
     green=results["green"],
     gaussian=results["gaussian"],
-    median=results["median"]
+    median=results["median"],
+    opening=results["opening"],
+    closing=results["closing"],
+    threshold=results["threshold"],
+    vessel=results["vessel"],
+    features=results["features"]
 )
 
 

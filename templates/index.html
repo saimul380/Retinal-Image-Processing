@@ -170,6 +170,128 @@
 
         </div>
 
+        <!-- Morphological Opening -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Morphological Opening</h5>
+
+                    <img
+                        src="{{ opening }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Morphological Closing -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <div class="card-body text-center">
+
+                    <h5>Morphological Closing</h5>
+
+                    <img
+                        src="{{ closing }}"
+                        class="img-fluid rounded">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Adaptive Threshold -->
+<div class="col-md-6 mb-4">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h5>Adaptive Threshold</h5>
+
+            <img
+                src="{{ threshold }}"
+                class="img-fluid rounded">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Blood Vessel Segmentation -->
+<div class="col-md-6 mb-4">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h5>Blood Vessel Segmentation</h5>
+
+            <img
+                src="{{ vessel }}"
+                class="img-fluid rounded">
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+    <div class="card-body">
+
+        <h3 class="mb-3 text-center">
+
+            Extracted Features
+
+        </h3>
+
+        <table class="table table-bordered">
+
+            <thead>
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Value</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for key, value in features.items() %}
+
+                <tr>
+
+                    <td>{{ key }}</td>
+
+                    <td>{{ value }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
     </div>
 
     {% endif %}
