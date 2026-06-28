@@ -42,6 +42,8 @@ def upload():
     closing=results["closing"],
     threshold=results["threshold"],
     vessel=results["vessel"],
+    overlay=results["overlay"],
+    processing_time=results["processing_time"],
     features=results["features"]
 )
 

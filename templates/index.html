@@ -2,33 +2,124 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Retinal Image Processing</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        body{
+            background:#eef5fb;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .card{
+            transition:.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 15px 30px rgba(0,0,0,.15)!important;
+        }
+
+        img{
+            transition:.3s;
+        }
+
+        img:hover{
+            transform:scale(1.02);
+        }
+
+        h5{
+            font-weight:600;
+        }
+
+        .table td{
+            vertical-align:middle;
+        }
+
+        footer{
+            font-size:15px;
+        }
+
+    </style>
 
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container py-5">
+<div class="container-fluid py-5 px-4">
+
+    <!-- Header -->
 
     <div class="text-center mb-5">
 
-        <h1 class="fw-bold text-primary">
+        <h1 class="display-4 fw-bold text-dark">
+
             Retinal Image Analysis System
+
         </h1>
 
-        <p class="text-muted">
-            Diabetic Retinopathy Image Processing
+        <p class="lead text-primary fw-semibold">
+
+            Automatic Diabetic Retinopathy Detection
+
+        </p>
+
+        <span class="badge bg-primary fs-6 px-3 py-2 mb-3">
+
+            AI-Based Retinal Screening
+
+        </span>
+
+        <p class="text-secondary">
+
+            Image Enhancement |
+            Blood Vessel Segmentation |
+            Feature Extraction
+
         </p>
 
     </div>
 
-    <div class="card shadow p-4 mb-5">
+    <!-- Instructions -->
 
-        <form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="alert alert-info shadow-sm">
+
+        <b>Instructions</b>
+
+        <ul class="mb-0">
+
+            <li>Upload a retinal fundus image.</li>
+
+            <li>Click Process Image.</li>
+
+            <li>
+                The system automatically performs
+                enhancement, segmentation and feature extraction.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- Upload Card -->
+
+    <div class="card shadow-lg border-0 rounded-4 p-5 mb-5">
+
+        <form action="/upload"
+              method="POST"
+              enctype="multipart/form-data">
 
             <div class="mb-3">
 
@@ -40,13 +131,19 @@
 
             </div>
 
-            <button
-                class="btn btn-primary w-100"
-                type="submit">
+            <div class="text-center">
 
-                Process Image
+                <button
+                    class="btn btn-primary btn-lg px-5"
+                    type="submit">
 
-            </button>
+                    <i class="bi bi-cpu"></i>
+
+                    Process Image
+
+                </button>
+
+            </div>
 
         </form>
 
@@ -55,19 +152,26 @@
     {% if image %}
 
     <div class="row">
+                <!-- Original -->
 
-        <!-- Original -->
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
 
-            <div class="card shadow">
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Original Image</h5>
+                    <h5>
+
+                        <i class="bi bi-camera"></i>
+
+                        Original Image
+
+                    </h5>
 
                     <img
                         src="{{ image }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -76,17 +180,25 @@
         </div>
 
         <!-- CLAHE -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>CLAHE Enhancement</h5>
+                    <h5>
+
+                        <i class="bi bi-image"></i>
+
+                        CLAHE Enhancement
+
+                    </h5>
 
                     <img
                         src="{{ clahe }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -95,17 +207,25 @@
         </div>
 
         <!-- Histogram -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Histogram Equalization</h5>
+                    <h5>
+
+                        <i class="bi bi-bar-chart"></i>
+
+                        Histogram Equalization
+
+                    </h5>
 
                     <img
                         src="{{ histogram }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -114,17 +234,25 @@
         </div>
 
         <!-- Green -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Green Channel</h5>
+                    <h5>
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Green Channel
+
+                    </h5>
 
                     <img
                         src="{{ green }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -133,17 +261,25 @@
         </div>
 
         <!-- Gaussian -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Gaussian Filter</h5>
+                    <h5>
+
+                        <i class="bi bi-filter"></i>
+
+                        Gaussian Filter
+
+                    </h5>
 
                     <img
                         src="{{ gaussian }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -152,17 +288,25 @@
         </div>
 
         <!-- Median -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Median Filter</h5>
+                    <h5>
+
+                        <i class="bi bi-sliders"></i>
+
+                        Median Filter
+
+                    </h5>
 
                     <img
                         src="{{ median }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -171,17 +315,25 @@
         </div>
 
         <!-- Morphological Opening -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Morphological Opening</h5>
+                    <h5>
+
+                        <i class="bi bi-box"></i>
+
+                        Morphological Opening
+
+                    </h5>
 
                     <img
                         src="{{ opening }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -190,17 +342,25 @@
         </div>
 
         <!-- Morphological Closing -->
-        <div class="col-md-6 mb-4">
 
-            <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
                 <div class="card-body text-center">
 
-                    <h5>Morphological Closing</h5>
+                    <h5>
+
+                        <i class="bi bi-box-fill"></i>
+
+                        Morphological Closing
+
+                    </h5>
 
                     <img
                         src="{{ closing }}"
-                        class="img-fluid rounded">
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
 
                 </div>
 
@@ -209,94 +369,317 @@
         </div>
 
         <!-- Adaptive Threshold -->
-<div class="col-md-6 mb-4">
 
-    <div class="card shadow">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
 
-        <div class="card-body text-center">
+            <div class="card shadow-lg border-0 rounded-4 h-100">
 
-            <h5>Adaptive Threshold</h5>
+                <div class="card-body text-center">
 
-            <img
-                src="{{ threshold }}"
-                class="img-fluid rounded">
+                    <h5>
+
+                        <i class="bi bi-grid"></i>
+
+                        Adaptive Threshold
+
+                    </h5>
+
+                    <img
+                        src="{{ threshold }}"
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Blood Vessel Segmentation -->
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h5>
+
+                        <i class="bi bi-diagram-3"></i>
+
+                        Blood Vessel Segmentation
+
+                    </h5>
+
+                    <img
+                        src="{{ vessel }}"
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Blood Vessel Overlay -->
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <h5>
+
+                        <i class="bi bi-layers"></i>
+
+                        Blood Vessel Overlay
+
+                    </h5>
+
+                    <img
+                        src="{{ overlay }}"
+                        class="img-fluid rounded-3"
+                        style="height:320px; object-fit:contain;">
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+        <!-- Processing Status -->
 
-<!-- Blood Vessel Segmentation -->
-<div class="col-md-6 mb-4">
-
-    <div class="card shadow">
+    <div class="card border-success shadow-lg mb-4">
 
         <div class="card-body text-center">
 
-            <h5>Blood Vessel Segmentation</h5>
+            <h3 class="text-success">
 
-            <img
-                src="{{ vessel }}"
-                class="img-fluid rounded">
+                <i class="bi bi-check-circle-fill"></i>
+
+                Processing Completed Successfully
+
+            </h3>
+
+            <p class="lead">
+
+                Execution Time
+
+                <strong>
+
+                    {{ processing_time }}
+
+                    Seconds
+
+                </strong>
+
+            </p>
 
         </div>
 
     </div>
 
-</div>
+    <!-- Feature Table -->
 
-<div class="card shadow mt-4">
+    <div class="card shadow-lg border-0 rounded-4 mt-4">
 
-    <div class="card-body">
+        <div class="card-body">
 
-        <h3 class="mb-3 text-center">
+            <h3 class="mb-3 text-center">
 
-            Extracted Features
+                Extracted Features
 
-        </h3>
+            </h3>
 
-        <table class="table table-bordered">
+            <table class="table table-hover table-striped">
 
-            <thead>
+                <thead>
 
-                <tr>
+                    <tr>
 
-                    <th>Feature</th>
+                        <th class="text-primary">
 
-                    <th>Value</th>
+                            Feature
 
-                </tr>
+                        </th>
 
-            </thead>
+                        <th class="text-primary">
 
-            <tbody>
+                            Result
 
-                {% for key, value in features.items() %}
+                        </th>
 
-                <tr>
+                    </tr>
 
-                    <td>{{ key }}</td>
+                </thead>
 
-                    <td>{{ value }}</td>
+                <tbody>
 
-                </tr>
+                    {% for key, value in features.items() %}
 
-                {% endfor %}
+                    <tr>
 
-            </tbody>
+                        <td>{{ key }}</td>
 
-        </table>
+                        <td>{{ value }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <!-- Analysis Summary -->
+
+            <div class="alert alert-success mt-4">
+
+                <b>Analysis Summary</b>
+
+                <br><br>
+
+                ✔ Image Successfully Enhanced
+
+                <br>
+
+                ✔ Blood Vessel Segmentation Completed
+
+                <br>
+
+                ✔ Feature Extraction Completed
+
+                <br>
+
+                ✔ Ready for Diabetic Retinopathy Classification
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
+    <!-- Processing Pipeline -->
+
+    <div class="card shadow-lg border-0 rounded-4 mt-4">
+
+        <div class="card-body">
+
+            <h3 class="text-center text-primary mb-4">
+
+                Processing Pipeline
+
+            </h3>
+
+            <div class="text-center fs-5">
+
+                Original Image
+
+                <br>⬇
+
+                <br>Green Channel
+
+                <br>⬇
+
+                <br>CLAHE
+
+                <br>⬇
+
+                <br>Histogram Equalization
+
+                <br>⬇
+
+                <br>Gaussian Filter
+
+                <br>⬇
+
+                <br>Median Filter
+
+                <br>⬇
+
+                <br>Morphological Opening
+
+                <br>⬇
+
+                <br>Morphological Closing
+
+                <br>⬇
+
+                <br>Adaptive Threshold
+
+                <br>⬇
+
+                <br>Blood Vessel Segmentation
+
+                <br>⬇
+
+                <br>Blood Vessel Overlay
+
+                <br>⬇
+
+                <br>Feature Extraction
+
+            </div>
+
+        </div>
 
     </div>
 
     {% endif %}
 
+        <!-- Footer -->
+
+    <footer class="text-center mt-5">
+
+        <hr>
+
+        <h5 class="text-primary">
+
+            <i class="bi bi-eye-fill"></i>
+
+            Retinal Image Analysis System
+
+        </h5>
+
+        <p class="text-muted">
+
+            Developed by
+
+            <strong>
+
+                Team ZeroPrime
+
+            </strong>
+
+            <br>
+
+            Department of Computer Science & Engineering
+
+            <br>
+
+            International Islamic University Chittagong
+
+            <br>
+
+            2026
+
+        </p>
+
+        <small class="text-secondary">
+
+            Powered by Python • Flask • OpenCV • Bootstrap 5
+
+        </small>
+
+    </footer>
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
